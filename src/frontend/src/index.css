@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* Primary red: #D12A22 */
+    --primary: 0.44 0.22 27.3;
+    --primary-foreground: 1 0 0;
+    /* Accent orange: #F3702A */
+    --accent: 0.67 0.19 43;
+    --accent-foreground: 1 0 0;
+    /* Background: #F8F8F8 */
+    --background: 0.97 0 0;
+    --foreground: 0.14 0 0;
+    /* Card: white */
+    --card: 1 0 0;
+    --card-foreground: 0.14 0 0;
+    --popover: 1 0 0;
+    --popover-foreground: 0.14 0 0;
+    /* Secondary/muted */
+    --secondary: 0.9 0.04 30;
+    --secondary-foreground: 0.14 0 0;
+    --muted: 0.94 0 0;
+    --muted-foreground: 0.48 0 0;
+    /* Borders */
+    --border: 0.9 0 0;
+    --input: 0.9 0 0;
+    --ring: 0.44 0.22 27.3;
+    /* Destructive */
+    --destructive: 0.44 0.22 27.3;
+    --destructive-foreground: 1 0 0;
+    /* Charts */
+    --chart-1: 0.44 0.22 27.3;
+    --chart-2: 0.67 0.19 43;
+    --chart-3: 0.65 0.15 150;
+    --chart-4: 0.65 0.15 60;
+    --chart-5: 0.55 0.18 250;
+    /* Sidebar */
+    --sidebar: 1 0 0;
+    --sidebar-foreground: 0.14 0 0;
+    --sidebar-primary: 0.44 0.22 27.3;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.9 0.04 30;
+    --sidebar-accent-foreground: 0.14 0 0;
+    --sidebar-border: 0.9 0 0;
+    --sidebar-ring: 0.44 0.22 27.3;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .sos-pulse {
+    animation: sos-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes sos-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 oklch(0.44 0.22 27.3 / 0.6);
+    }
+    50% {
+      transform: scale(1.04);
+      box-shadow: 0 0 0 20px oklch(0.44 0.22 27.3 / 0);
+    }
+  }
+
+  .ring-pulse-1 {
+    animation: ring-expand 2s ease-out infinite;
+  }
+  .ring-pulse-2 {
+    animation: ring-expand 2s ease-out infinite 0.5s;
+  }
+  .ring-pulse-3 {
+    animation: ring-expand 2s ease-out infinite 1s;
+  }
+
+  @keyframes ring-expand {
+    0% {
+      transform: scale(0.85);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(1.4);
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sos-pulse,
+    .ring-pulse-1,
+    .ring-pulse-2,
+    .ring-pulse-3 {
+      animation: none;
+    }
+  }
+}
